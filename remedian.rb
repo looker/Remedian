@@ -1,5 +1,5 @@
 class Remedian
-  def initialize(base, ntile = ntile)
+  def initialize(base, ntile = 50)
     @base = base
     @exponent = 1
     @ntile = ntile
