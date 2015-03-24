@@ -96,9 +96,9 @@ end
 break if top < bottom
 end
 
-p 'worst case result: %d\n' % r.result
+p 'worst case result: %d' % r.result
 
-p '10 random results:\n'
+p '10 random results:'
 
 10.times do
   r = Remedian.new(base, ntile)
@@ -109,3 +109,19 @@ p '10 random results:\n'
   p r.result
 end
 
+p 'distribution of 10,000 random results:'
+
+result_counts = Hash.new 0
+
+10000.times do
+  r = Remedian.new(base, ntile)
+  a = *(1..set_size)
+  while a.length > 0 do
+    r.next(a.delete_at(rand(a.length)))
+  end
+  result_counts[r.result] += 1
+end
+
+result_counts.keys.sort.each do |k|
+  p '%d: %d' % [k, result_counts[k]]
+end
