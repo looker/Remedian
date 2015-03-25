@@ -66,8 +66,10 @@ class Remedian
 end
 
 ntile = 50
-set_size = 2000
+set_size = 20000
 base = 101
+
+p 'ntile of %d for a set size of %d using base %d' % [ntile, set_size, base]
 
 r = Remedian.new(base, ntile)
 
@@ -82,13 +84,13 @@ bottom = 1
 r = Remedian.new(base, ntile)
 
 loop do
-6.times do
+(base/2 + 1).times do
   r.next(top)
   top = top - 1
   break if top < bottom
 end
 break if top < bottom
-5.times do
+(base/2).times do
   r.next(bottom)
   bottom = bottom + 1
   break if top < bottom
@@ -98,7 +100,7 @@ end
 
 p 'worst case result: %d' % r.result
 
-p '10 random results:'
+p '10 random permutations:'
 
 10.times do
   r = Remedian.new(base, ntile)
@@ -109,7 +111,7 @@ p '10 random results:'
   p r.result
 end
 
-p 'distribution of 10,000 random results:'
+p 'distribution of 10000 random permutations:'
 
 result_counts = Hash.new 0
 
