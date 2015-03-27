@@ -50,7 +50,7 @@ class Remedian
     end
   end
 
-  def result()
+  def result
     weighted_total = 0
     total_weight = 0
     weight = 1
@@ -111,11 +111,11 @@ p '10 random permutations:'
   p r.result
 end
 
-p 'distribution of 10000 random permutations:'
+p 'distribution of 1000 random permutations:'
 
 result_counts = Hash.new 0
 
-10000.times do
+1000.times do
   r = Remedian.new(base, ntile)
   a = *(1..set_size)
   while a.length > 0 do
